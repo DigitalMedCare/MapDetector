@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-import 'package:data_collector/page_six.dart';
+import 'package:data_collector/image_display.dart';
+import 'package:data_collector/server_side.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_painting_tools/flutter_painting_tools.dart';
@@ -24,6 +25,7 @@ class _ShowImageState extends State<ShowImage> {
   ui.Image? paintedImage;
   late File editedImageFile;
   late bool imageSaved = false;
+  late Color penColor = Color(23);
 
   @override
   void initState() {
@@ -81,8 +83,10 @@ class _ShowImageState extends State<ShowImage> {
                 colorsType: ColorsType.material,
                 onTap: (Color color) {
                   // do your logic here with the pressed color, for example change the color of the brush
+
                   print('tapped color: $color');
                   controller.changeBrushColor(color);
+                  penColor = color;
                 },
               ),
               const SizedBox(height: 50),
@@ -137,6 +141,7 @@ class _ShowImageState extends State<ShowImage> {
                                     paintedImage: editedImageFile),
                               ),
                             );
+                            ServerSide.uploadImage(editedImageFile, penColor);
                           },
                           child: const Text('Get painted image'),
                         ),

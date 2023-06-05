@@ -1,8 +1,8 @@
-import 'package:data_collector/page_four.dart';
-import 'package:data_collector/page_one.dart';
-import 'package:data_collector/page_six.dart';
-import 'package:data_collector/page_three.dart';
-import 'package:data_collector/page_two.dart';
+import 'package:data_collector/location_page.dart';
+import 'package:data_collector/welcome_page.dart';
+import 'package:data_collector/image_display.dart';
+import 'package:data_collector/pick_image_page.dart';
+import 'package:data_collector/information_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -71,7 +71,7 @@ class _SwipeNavigationState extends State<SwipeNavigation> {
         children: const [
           PageOne(),
           PageTwo(),
-          PageThree(),
+          PickImage(),
           LocationPage(),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:data_collector/page_six.dart';
+import 'package:data_collector/image_display.dart';
+import 'package:data_collector/server_side.dart';
 import 'package:data_collector/show.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,15 @@ class PageFive extends StatefulWidget {
 
 class _PageFiveState extends State<PageFive> {
   Color? color;
+  late File Image = widget.imageFile!;
+
+  @override
+  void initState() {
+    setState(() {
+      Image = widget.imageFile!;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

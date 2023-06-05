@@ -8,14 +8,14 @@ import 'dart:io';
 
 import 'package:flutter_native_image/flutter_native_image.dart';
 
-class PageThree extends StatefulWidget {
-  const PageThree({Key? key}) : super(key: key);
+class PickImage extends StatefulWidget {
+  const PickImage({Key? key}) : super(key: key);
 
   @override
-  State<PageThree> createState() => _PageThreeState();
+  State<PickImage> createState() => _PickImageState();
 }
 
-class _PageThreeState extends State<PageThree> {
+class _PickImageState extends State<PickImage> {
   File? imageFile;
   Color? color;
   int? imageWidth;
