@@ -141,7 +141,11 @@ class _ShowImageState extends State<ShowImage> {
                                     paintedImage: editedImageFile),
                               ),
                             );
-                            ServerSide.uploadImage(editedImageFile, penColor);
+                            ServerSide.uploadTwoImage(
+                              editedImageFile,
+                              widget.imageFile!,
+                              penColor,
+                            );
                           },
                           child: const Text('Get painted image'),
                         ),

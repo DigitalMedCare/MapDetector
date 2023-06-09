@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:data_collector/image_display.dart';
+import 'package:data_collector/pixel_detection.dart';
 import 'package:data_collector/server_side.dart';
 import 'package:data_collector/show.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -61,54 +62,44 @@ class _PageFiveState extends State<PageFive> {
                         borderRadius: BorderRadius.circular(0),
                       ),
                     ),
-                    Positioned(
-                      bottom: 0.0,
-                      right: 50.0,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ShowImage(
-                                  imageFile: widget.imageFile,
-                                  imageHeight: widget.imageHeight,
-                                  imageWidth: widget.imageWidth,
-                                ),
-                              ),
-                            );
-                          },
-                          icon: const Icon(Icons.draw),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 80),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FloatingActionButton(
-                  backgroundColor: color,
-                  child: const Text(''),
-                  onPressed: () {},
-                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PixelDetection(
+                            imageFile: widget.imageFile,
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Text('Pixel Color Detection')),
                 const SizedBox(width: 10),
-                Text(
-                  color.toString(),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                )
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ShowImage(
+                            imageFile: widget.imageFile,
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Text('Drawing Pen'))
               ],
             ),
-          ),
+          )
         ],
       ),
     );
