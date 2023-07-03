@@ -7,33 +7,8 @@ import 'package:http/http.dart' as http;
 
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
-import 'package:flutter_opencv/flutter_opencv.dart';
 
 class ServerSide {
-  Future<Uint8List> straightenImage(
-      String imagePath, double outputWidth, double outputHeight) async {
-    final ByteData imageData = await rootBundle.load(imagePath);
-    final Uint8List imageBytes = Uint8List.view(imageData.buffer);
-
-    await FlutterOpencv.init();
-
-    final OpenCVPoint topLeft = OpenCVPoint(50, 50);
-    final OpenCVPoint topRight = OpenCVPoint(250, 70);
-    final OpenCVPoint bottomLeft = OpenCVPoint(70, 200);
-    final OpenCVPoint bottomRight = OpenCVPoint(220, 220);
-
-    final OpenCVMatrix transformationMatrix =
-        await FlutterOpencv.getPerspectiveTransform(
-            [topLeft, topRight, bottomLeft, bottomRight]);
-
-    final Uint8List transformedImage = await FlutterOpencv.warpPerspective(
-        imageBytes,
-        transformationMatrix,
-        ImageSize(outputWidth.toInt(), outputHeight.toInt()));
-
-    return transformedImage;
-  }
-
   static void uploadTwoImage(
       File imageFile, File normalImage, Color color) async {
     int red = color.red;
